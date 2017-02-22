@@ -1,0 +1,39 @@
+
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+  <h3>Edit Your Profile</h3>
+  <form action="{{ request.path }}" method="post" name="edit">
+      {%- for category, message in get_flashed_messages(with_categories = true) %}
+         <div class = "alert alert-info">
+            {{ message }}
+         </div>
+      {%- endfor %}
+      <hr>
+    <hr>
+     <table class='table'>
+           <tr>
+              <td>E-mail:</td>
+              <td>{{ form.email(readonly=true, size=24) }}</td>
+          </tr>
+          <tr>
+              <td>Your first name:</td>
+              <td>{{ form.first_name(size=24) }}</td>
+          </tr>
+        <tr>
+              <td>Your last name:</td>
+              <td>{{ form.last_name(size=24) }}</td>
+          </tr>
+          <tr>
+              <td>Share favourites:</td>
+              <td>{{ form.share_favourites }}</td>
+              <td></td>
+          </tr>
+          <tr> 
+              <td></td>
+              <td><input type="submit" value="Save"></td>
+          </tr> 
+      </table>
+  </form>
+{% endblock %} 

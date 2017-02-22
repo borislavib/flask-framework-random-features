@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+    
+    <p>Async mode is: <b>{{ async_mode }}</b></p>
+    <p>Average ping/pong latency: <b><span id="ping-pong"></span>ms</b></p>
+    
+    <h2>Send:</h2>
+    <br/>
+    <form id="broadcast" method="POST" action='#'>
+        <input type="text" style="width: 700px;" name="broadcast_data" id="broadcast_data" placeholder="Message">
+        <input type="submit" value="Broadcast">
+    </form>
+       <br/>
+    <form id="join" method="POST" action='#'>
+        <input type="text" style="width: 700px;" name="join_room" id="join_room" placeholder="Room Name">
+        <input type="submit" value="Join Room">
+    </form>
+    <br>
+    <form id="leave" method="POST" action='#'>
+        <input type="text" style="width: 700px;" name="leave_room" id="leave_room" placeholder="Room Name">
+        <input type="submit" value="Leave Room">
+    </form>
+    <br>
+    <form id="send_room" method="POST" action='#'>
+        <input type="text" style="width: 345px;" name="room_name" id="room_name" placeholder="Room Name">
+        <input type="text" style="width: 350px;" name="room_data" id="room_data" placeholder="Message">
+        <input type="submit" value="Send Room">
+    </form>
+    
+    <br>
+    <form id="disconnect" method="POST" action="#">
+        <input type="submit" value="Disconnect">
+    </form>
+ 
+
+   </table>
+    <h2>Receive:</h2>
+    <div id="log"></div>
+
+
+
+<script type="text/javascript" src="//code.jquery.com/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.5/socket.io.min.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='scripts.js') }}"></script> 
+
+
+{% endblock %}

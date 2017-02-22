@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<h3>Users</h3>
+
+       <hr>
+ 
+
+      <table class='table'>
+         <thead>
+            <tr>
+               <th>First name</th>
+               <th>Last name</th>
+               <th>E-mail</th>
+               <th>Share favourites</th>
+            </tr>
+         </thead> 
+ 
+         <tbody>
+            {% for user in users %}
+               <tr>
+                  <td>{{ user.first_name }}</td>
+                  <td>{{ user.last_name }}</td> 
+                  <td><a href=/user/{{ user.id}}>{{ user.email }}</a></td> 
+                  {% if user.share_favourites == 1 %}
+                  <td>Yes</td>
+                  {% else %}
+                  <td>No</td>
+                  {% endif %}
+               </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+
+
+
+{% endblock %}

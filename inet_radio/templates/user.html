@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+    
+        <link href="../static/bootstrap.css" rel="stylesheet">
+        <link href="../static/bootstrap-theme.css" rel="stylesheet">
+ 
+
+<h3>User</h3>
+       <hr>
+      <table class='table'>
+         <thead>
+            <tr>
+               <th>First name</th>
+               <th>Last name</th>
+               <th>E-mail</th>
+            </tr>
+         </thead> 
+ 
+         <tbody>
+            {% for user in users %}
+               <tr>
+                  <td>{{ user.first_name }}</td>
+                  <td>{{ user.last_name }}</td> 
+                  <td>{{ user.email }}</td> 
+               </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+
+      {% for user in users %}
+      {% if user.share_favourites == 1 %}
+      <hr>
+        
+      <table class='table'>
+         <thead>
+            <tr>
+               <th>Song name</th>
+               <th>Added date</th>
+            </tr>
+         </thead> 
+ 
+         <tbody>
+            {% for fav in favourites %}
+               <tr>
+                  <td>{{ fav.song_name }}</td>
+                  <td>{{ fav.pub_date }}</td> 
+               </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+     {% endif %}
+    {% endfor %}
+{% endblock %}

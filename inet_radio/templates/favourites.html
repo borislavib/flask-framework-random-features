@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h3>Favorites</h3>
+      {%- for category, message in get_flashed_messages(with_categories = true) %}
+         <div class = "alert alert-info">
+            {{ message }}
+         </div>
+      {%- endfor %}
+      <form action = "{{ request.path }}" method = "post">
+        <!--
+          <label for = "name_singer">Name Singer</label><br>
+         <input type = "text" name = "name_singer" placeholder = "Name singer" /><br>
+        -->
+         <label for = "name_song">Name author and song</label><br>
+         <input type = "text" name = "name_song" placeholder = "Name song" /><br>
+
+         <input type = "submit" name = "action" value = "Add" />
+        <hr>
+
+         <label for = "id_song">Delete</label><br>
+         <input type = "number" name = "id_song" placeholder = "Id" /><br>
+    
+         <input type = "submit" name = "action" value = "Del"/>
+    </form>
+ 
+    <hr>
+
+     <hr>
+      <table class='table'>
+         <thead>
+            <tr>
+               <th>ID</th>
+               <th>Song name</th>
+               <th>Date added</th>
+            </tr>
+         </thead> 
+ 
+         <tbody>
+            {% for song in songs %}
+               <tr>
+                  <td>{{ song.id }}</td>
+                  <td>{{ song.song_name }}</td>
+                  <td>{{ song.pub_date }}</td>
+               </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+
+
+      
+{% endblock %}

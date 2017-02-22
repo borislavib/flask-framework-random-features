@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<h3>Rating</h3>
+
+       <hr>
+      <table class='table'>
+         <thead>
+            <tr>
+               <th>Count likes</th>
+               <th>Song name</th>
+            </tr>
+         </thead> 
+ 
+         <tbody>
+            {% for song in fav_songs %}
+               <tr>
+                  <td>{{ song.count }}</td>
+                  <td>{{ song.song_name }}</td>
+               </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+
+
+
+{% endblock %}

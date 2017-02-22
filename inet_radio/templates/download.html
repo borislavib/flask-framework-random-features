@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h3>Download</h3>
+<br>
+      {%- for category, message in get_flashed_messages(with_categories = true) %}
+         <div class = "alert alert-info">
+            {{ message }}
+         </div>
+      {%- endfor %}
+      <form action = "{{ request.path }}" method = "post">
+          <label for = "name">URL:</label>
+         <input type = "text" name = "name" style="width: 800px;" placeholder = "Name" value="https://www.freesound.org/people/zagi2/sounds/352778/" />
+         <input type = "submit" value = "Download" />
+      </form>
+            {% for r in res %}
+               <tr>
+                  <td>{{ r }}</td>
+               </tr>
+            {% endfor %}
+            <br>
+            <p>Please, choose from here: <a href="https://www.freesound.org/browse/">Freesound.org</a> (Creative Commons Licensed sounds)</p>
+{% endblock %}
